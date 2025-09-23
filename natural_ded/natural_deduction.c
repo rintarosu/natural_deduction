@@ -99,7 +99,13 @@ Node* create_Node(NodeType type, char value, Node* left, Node* right) {
     return node;
 }
 
+static Token* tokens;
+static int pos;
 
+
+Node* parse();
+Node* parse_not();
+Node* parse_factor();
 
 
 

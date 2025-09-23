@@ -1,1 +1,1 @@
-# natural_deduction_
+# natural_deduction
