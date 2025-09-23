@@ -21,8 +21,6 @@ typedef struct{
 } Token;
 
 
-
-
 Token* tokanize(const char* input, int* tokenCount) {
     int len = strlen(input);
     Token* tokens = malloc(sizeof(Token) * (len + 1));
@@ -123,7 +121,7 @@ Node* parse_factor() {
         return create_Node(NODE_VAR, current.value, NULL, NULL);
     } else if (current.type == TOK_LPAREN) {
         consume(TOK_LPAREN);
-        Node* node = parse_implies(); // 変更: parse() を parse_implies() に
+        Node* node = parse_implies(); 
         consume(TOK_RPAREN);
         return node;
     } else {
@@ -176,7 +174,7 @@ Node* parse_implies() {
 Node* parse_expression(Token* token_list) {
     tokens = token_list;
     pos = 0;
-    Node* root = parse_implies(); // 変更: parse() を parse_implies() に
+    Node* root = parse_implies(); 
     if (tokens[pos].type != TOK_END) {
         fprintf(stderr, "Error: Syntax error at the end of input\n");
         exit(1);
@@ -212,17 +210,9 @@ int main(){
 
     int tokenCount = 0;
 
-    // tokanize関数の戻り値を変数に保存し、同時にトークン数も更新
     Token* tokens = tokanize(proposition, &tokenCount);
   
-
-    // 保存したポインタとトークン数を使ってprintTokensを呼び出す
-    printTokens(tokens, tokenCount);
-    
-
-
-    // メモリを解放する
-    
+    printTokens(tokens, tokenCount);    
 
     Node* node = parse_expression(tokens);
 
