@@ -206,7 +206,8 @@ void freeTree(Node* node) {
 
 
 int main(){
-    const char* proposition = "P\\/R->E/\\Q";
+    //↓ここに字句解析、構文解析したい論理式を入力
+    const char* proposition = "~~~P\\/(R->(~R/\\Q))";
 
     int tokenCount = 0;
 
