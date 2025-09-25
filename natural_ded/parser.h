@@ -1,5 +1,5 @@
 #ifndef PARSER.H
-#define LEXER_H
+#define PARSER_H
 
 #include "lexer.h"
 
@@ -23,8 +23,8 @@ typedef struct{
 
 Node* create_Node(NodeType type, char value, Node* left, Node* right);
 
-static Token* tokens;
-static int pos;
+extern Token* tokens;
+extern int pos;
 
 void consume(TokenType expectedType);
 

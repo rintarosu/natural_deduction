@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include "lexer.h"
 #include "parser.h"
+#include "natural_deduction.h"
 
+extern Node** assumptions;
+extern int assumption_count;
 
 
 int main(){
@@ -18,6 +21,14 @@ int main(){
     Node* node = parse_expression(tokens);
 
     printTree(node,tokenCount);
+
+   
+    assumptions = (Node**)realloc(assumptions, (assumption_count + 1) * sizeof(Node*));
+    if (assumptions == NULL) {
+        fprintf(stderr, "メモリの初期割り当てに失敗しました\n");
+        return 1;
+    }
+
 
 
     free(tokens);
